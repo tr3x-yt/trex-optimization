@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trex Optimization — Хищная оптимизация вашего ПК</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === ОСНОВНЫЕ СТИЛИ === */
+        :root {
+            --trex-green: #00ff88;
+            --trex-cyan: #00eeff;
+            --trex-orange: #ff6600;
+            --dark-bg: #0a0a0f;
+            --darker-bg: #050508;
+            --card-bg: rgba(25, 25, 35, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #f0f0f0;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(0, 238, 255, 0.05) 0%, transparent 25%);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+        }
+
+        /* === КНОПКИ С АНИМАЦИЕЙ === */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--trex-green), var(--trex-cyan));
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+        }
+
+        .btn-telegram {
+            background: linear-gradient(90deg, var(--trex-cyan), #0088cc);
+            color: white;
+        }
+
+        .btn-orange {
+            background: linear-gradient(90deg, var(--trex-orange), #ff9500);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+        }
+
+        /* === ШАПКА С АНИМАЦИЕЙ ПОЯВЛЕНИЯ === */
+        header.hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--trex-green), var(--trex-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 35px;
+            color: #ccc;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 102, 0, 0.15);
+            color: var(--trex-orange);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            animation: badgeGlow 2s infinite alternate;
+        }
+
+        @keyframes badgeGlow {
+            from { box-shadow: 0 0 10px rgba(255, 102, 0, 0.3); }
+            to { box-shadow: 0 0 20px rgba(255, 102, 0, 0.6); }
+        }
+
+        /* === НАВИГАЦИЯ === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--trex-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* === УСЛУГИ === */
+        .services-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: #fff;
+            position: relative;
+        }
+
+        .services-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--trex-green), var(--trex-cyan));
+            margin: 15px auto;
+            border-radius: 5px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(0, 238, 255, 0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            border-color: var(--trex-cyan);
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 238, 255, 0.15);
+        }
+
+        .service-card.popular {
+            border-color: var(--trex-orange);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, var(--trex-orange), #ff9500);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--trex-green), var(--trex-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li i {
+            color: var(--trex-green);
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--trex-cyan);
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        /* === КАК РАБОТАЕТ === */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+            background: rgba(25, 25, 35, 0.6);
+            border-radius: 15px;
+            border-top: 4px solid var(--trex-green);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background: linear-gradient(135deg, var(--trex-green), var(--trex-cyan));
+            color: black;
+            font-weight: 900;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* === КОНТАКТЫ === */
+        .contacts {
+            background: var(--darker-bg);
+            border-radius: 30px;
+            margin: 40px 20px;
+            padding: 60px 40px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+            min-width: 280px;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .contact-link i {
+            font-size: 2rem;
+            color: var(--trex-cyan);
+        }
+
+        /* === ФУТЕР === */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* === АДАПТИВ ДЛЯ ТЕЛЕФОНА === */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .services-title { font-size: 2.2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .contact-link { min-width: 100%; }
+            .steps { grid-template-columns: 1fr; }
+            .btn { padding: 16px 25px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ШАПКА САЙТА -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-paw"></i>
+                TREX OPTIMIZATION
+            </a>
+            <div>
+                <a href="#services" class="btn btn-telegram">
+                    <i class="fab fa-telegram"></i> Услуги
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-t-rex"></i> ХИЩНАЯ СКОРОСТЬ ДЛЯ ВАШЕГО ПК
+                </div>
+                <h1>Trex Optimization: мощь динозавра для вашей системы</h1>
+                <p>Ваш компьютер медленный как древний ящер? Я проведу хищную оптимизацию системы. Результат — молниеносная работа, зверский FPS в играх и первоклассная производительность. Гарантия результата.</p>
+                <a href="#services" class="btn btn-primary">
+                    <i class="fas fa-fire"></i> ВЫБРАТЬ ПАКЕТ ОПТИМИЗАЦИИ
+                </a>
+                <a href="https://t.me/tr3x_admin" class="btn btn-orange">
+                    <i class="fab fa-telegram"></i> НАПИСАТЬ АДМИНУ В ТЕЛЕГРАМ
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- РАЗДЕЛ УСЛУГ -->
+    <section id="services">
+        <div class="container">
+            <h2 class="services-title">ПАКЕТЫ ХИЩНОЙ ОПТИМИЗАЦИИ</h2>
+            <div class="services-grid">
+                <!-- Карточка 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>СТАРТОВЫЙ РАЗГОН</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Чистка системного мусора и кэша</li>
+                        <li><i class="fas fa-check-circle"></i> Оптимизация автозагрузки Windows</li>
+                        <li><i class="fas fa-check-circle"></i> Настройка на максимальную скорость</li>
+                        <li><i class="fas fa-check-circle"></i> Базовая дефрагментация дисков</li>
+                    </ul>
+                    <div class="service-price">1 500 ₽</div>
+                    <a href="https://t.me/trex_optimization" class="btn btn-telegram" style="width:100%;">
+                        <i class="fab fa-telegram"></i> ЗАКАЗАТЬ В ТЕЛЕГРАМ
+                    </a>
+                </div>
+
+                <!-- Карточка 2 (ПОПУЛЯРНЫЙ) -->
+                <div class="service-card popular">
+                    <div class="popular-badge">ВЫБОР ХИЩНИКА</div>
+                    <div class="service-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>ГЕЙМЕРСКИЙ КЛЫК</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Тонкая настройка драйверов NVIDIA/AMD</li>
+                        <li><i class="fas fa-check-circle"></i> Оптимизация игровых лаунчеров</li>
+                        <li><i class="fas fa-check-circle"></i> Твики реестра для зверского FPS</li>
+                        <li><i class="fas fa-check-circle"></i> Настройка файла подкачки под игры</li>
+                        <li><i class="fas fa-check-circle"></i> Удаление фоновых процессов</li>
+                    </ul>
+                    <div class="service-price">2 900 ₽</div>
+                    <a href="https://t.me/trex_optimization" class="btn btn-primary" style="width:100%;">
+                        <i class="fas fa-bolt"></i> АКТИВИРОВАТЬ РЕЖИМ ХИЩНИКА
+                    </a>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>АПГРЕЙД АЛЬФЫ</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Полная переустановка Windows (чистая)</li>
+                        <li><i class="fas fa-check-circle"></i> Установка всех драйверов + обновления</li>
+                        <li><i class="fas fa-check-circle"></i> Настройка безопасности и бэкапа</li>
+                        <li><i class="fas fa-check-circle"></i> Установка пакета профессионального ПО</li>
+                        <li><i class="fas fa-check-circle"></i> Пожизненная поддержка в Telegram</li>
+                    </ul>
+                    <div class="service-price">4 500 ₽</div>
+                    <a href="https://t.me/trex_optimization" class="btn btn-telegram" style="width:100%;">
+                        <i class="fab fa-telegram"></i> ОБСУДИТЬ ДЕТАЛИ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАК ЭТО РАБОТАЕТ -->
+    <section style="background: rgba(0,238,255,0.03);">
+        <div class="container">
+            <h2 class="services-title">КАК ПРОИСХОДИТ ОПТИМИЗАЦИЯ</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Охота начинается</h3>
+                    <p>Вы выбираете пакет и пишете мне в Telegram</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Запуск когтей</h3>
+                    <p>Я подключаюсь к вашему ПК через AnyDesk и провожу диагностику</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Хищная работа</h3>
+                    <p>Провожу всю оптимизацию, вы наблюдаете за процессом в реальном времени</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Добыча ваша</h3>
+                    <p>Вы получаете быстрый ПК, подробный отчет и гарантию на работу</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section class="contacts">
+        <div class="container">
+            <h2 class="services-title">СВЯЖИТЕСЬ СО МНОЙ ПРЯМО СЕЙЧАС</h2>
+            <p style="text-align:center; margin-bottom:40px; font-size:1.2rem;">Отвечаю в Telegram в течение 15 минут</p>
+            <div class="contact-links">
+                <a href="https://t.me/trex_optimization" class="contact-link">
+                    <i class="fab fa-telegram"></i>
+                    <div>
+                        <strong>Канал с услугами</strong><br>
+                        <span>@trex_optimization</span>
+                    </div>
+                </a>
+                <a href="https://t.me/tr3x_admin" class="contact-link">
+                    <i class="fab fa-telegram"></i>
+                    <div>
+                        <strong>Личный Telegram для заказов</strong><br>
+                        <span>@tr3x_admin</span>
+                    </div>
+                </a>
+                <a href="mailto:mytrandingemail@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Электронная почта</strong><br>
+                        <span>mytrandingemail@gmail.com</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <p><strong>Trex Optimization</strong> — не просто настройка, это хищная перезагрузка вашего ПК.</p>
+            <p>© 2024 Все права защищены. Результат гарантирован. Оплата в рублях или криптовалюте.</p>
+        </div>
+    </footer>
+
+    <!-- СКРИПТ ДЛЯ АНИМАЦИЙ -->
+    <script>
+        // Анимация появления карточек при прокрутке
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Наблюдаем за карточками услуг
+            document.querySelectorAll('.service-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Плавный скролл для меню
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Динамический год в футере
+            document.querySelector('footer p:last-child').innerHTML =
+                document.querySelector('footer p:last-child').innerHTML.replace('2024', new Date().getFullYear());
+        });
+
+        // Эффект "печатания" для заголовка (опционально, можно раскомментировать)
+        /*
+        window.onload = function() {
+            const title = document.querySelector('.hero-content h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            typeWriter();
+        };
+        */
+    </script>
+</body>
+</html>
