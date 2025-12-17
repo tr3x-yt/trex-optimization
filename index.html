@@ -696,4 +696,1738 @@
 
         .review-card {
             background: var(--card-bg);
-            border-rad
+            border-radius: 20px;
+            padding: 25px 20px;
+            border: 2px solid rgba(157, 78, 221, 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .review-card.visible {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .review-card:nth-child(1) { animation-delay: 0.1s; }
+        .review-card:nth-child(2) { animation-delay: 0.2s; }
+        .review-card:nth-child(3) { animation-delay: 0.3s; }
+        .review-card:nth-child(4) { animation-delay: 0.4s; }
+        .review-card:nth-child(5) { animation-delay: 0.5s; }
+        .review-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @media (min-width: 1024px) {
+            .review-card:hover {
+                transform: translateY(-10px);
+                border-color: var(--trex-purple);
+                box-shadow: 0 20px 40px rgba(157, 78, 221, 0.2);
+            }
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--trex-purple), var(--trex-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: white;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .review-avatar::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .review-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .review-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+        }
+
+        .review-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--trex-yellow);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        @media (min-width: 768px) {
+            .review-info h3 {
+                font-size: 1.7rem;
+            }
+        }
+
+        .review-date {
+            color: #AAA;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .review-date {
+                font-size: 0.9rem;
+            }
+        }
+
+        .review-stars {
+            color: var(--trex-yellow);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .review-stars {
+                font-size: 1.2rem;
+            }
+        }
+
+        .review-text {
+            color: #DDD;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .review-text::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 2.5rem;
+            color: rgba(157, 78, 221, 0.3);
+            font-family: serif;
+        }
+
+        @media (min-width: 768px) {
+            .review-text {
+                font-size: 1.05rem;
+                padding-left: 20px;
+            }
+            .review-text::before {
+                font-size: 3rem;
+            }
+        }
+
+        .review-game {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.2);
+            color: var(--trex-orange);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .review-game {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.3s forwards;
+        }
+
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+                margin-top: 80px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stats-grid {
+                gap: 30px;
+            }
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, 
+                rgba(157, 78, 221, 0.1), 
+                rgba(0, 212, 255, 0.1));
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            border: 2px solid var(--trex-purple);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (min-width: 1024px) {
+            .stat-card:hover {
+                transform: translateY(-8px);
+                border-color: var(--trex-blue);
+                box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+            }
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--trex-green);
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stat-number {
+                font-size: 3.5rem;
+            }
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #AAA;
+            font-weight: 700;
+        }
+
+        @media (min-width: 768px) {
+            .stat-label {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stat-label {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* === ВАРИАНТЫ ОПТИМИЗАЦИИ === */
+        .options-section {
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            color: var(--trex-blue);
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.5s forwards;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--trex-orange), var(--trex-blue));
+            border-radius: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-title {
+                font-size: 4rem;
+            }
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .options-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+                margin-top: 60px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .options-grid {
+                gap: 30px;
+            }
+        }
+
+        .option-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 3px solid;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            animation-fill-mode: forwards;
+        }
+
+        .option-card.visible {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @media (min-width: 768px) {
+            .option-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: var(--shadow);
+            }
+        }
+
+        /* Карточка 1: Базовый минимум */
+        .card-basic {
+            border-color: var(--trex-orange);
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.15), 
+                rgba(255, 107, 53, 0.05));
+        }
+
+        /* Карточка 2: Без очереди */
+        .card-queue {
+            border-color: var(--trex-purple);
+            background: linear-gradient(135deg, 
+                rgba(157, 78, 221, 0.15), 
+                rgba(157, 78, 221, 0.05));
+        }
+
+        /* Карточка 3: Роскошный максимум */
+        .card-premium {
+            border-color: var(--trex-blue);
+            background: linear-gradient(135deg, 
+                rgba(0, 212, 255, 0.15), 
+                rgba(0, 212, 255, 0.05));
+        }
+
+        .option-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        @media (min-width: 768px) {
+            .option-badge {
+                top: 20px;
+                right: 20px;
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .badge-basic {
+            background: linear-gradient(45deg, var(--trex-orange), #FF8E53);
+            color: white;
+        }
+
+        .badge-queue {
+            background: linear-gradient(45deg, var(--trex-purple), #B366FF);
+            color: white;
+        }
+
+        .badge-premium {
+            background: linear-gradient(45deg, var(--trex-blue), #0099FF);
+            color: white;
+        }
+
+        .option-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .option-header {
+                flex-direction: row;
+                text-align: left;
+                gap: 20px;
+                margin-bottom: 35px;
+            }
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: pulse 3s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .option-icon {
+                font-size: 3rem;
+                min-width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .option-icon {
+                font-size: 3.5rem;
+                min-width: 80px;
+                height: 80px;
+            }
+        }
+
+        .icon-basic {
+            color: var(--trex-orange);
+            background: rgba(255, 107, 53, 0.2);
+        }
+
+        .icon-queue {
+            color: var(--trex-purple);
+            background: rgba(157, 78, 221, 0.2);
+        }
+
+        .icon-premium {
+            color: var(--trex-blue);
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        .option-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .option-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .option-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        .title-basic {
+            color: var(--trex-orange);
+            text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+        }
+
+        .title-queue {
+            color: var(--trex-purple);
+            text-shadow: 0 0 15px rgba(157, 78, 221, 0.5);
+        }
+
+        .title-premium {
+            color: var(--trex-blue);
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .option-subtitle {
+            font-size: 1rem;
+            color: #AAA;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 768px) {
+            .option-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        .price-tag {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            animation: pulse 3s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .price-tag {
+                font-size: 3.5rem;
+                margin: 25px 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .price-tag {
+                font-size: 4rem;
+                margin: 30px 0;
+            }
+        }
+
+        .price-basic {
+            color: var(--trex-orange);
+            text-shadow: 0 0 25px rgba(255, 107, 53, 0.7);
+        }
+
+        .price-queue {
+            color: var(--trex-purple);
+            text-shadow: 0 0 25px rgba(157, 78, 221, 0.7);
+        }
+
+        .price-premium {
+            color: var(--trex-blue);
+            text-shadow: 0 0 25px rgba(0, 212, 255, 0.7);
+        }
+
+        .includes-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .includes-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .includes-list li {
+                padding: 15px 0;
+                font-size: 1.05rem;
+                gap: 15px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .includes-list li:hover {
+                transform: translateX(10px);
+                border-bottom-color: currentColor;
+            }
+        }
+
+        .includes-list li i {
+            font-size: 1.1rem;
+            min-width: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .includes-list li i {
+                font-size: 1.3rem;
+            }
+        }
+
+        .list-basic li i { color: var(--trex-orange); }
+        .list-queue li i { color: var(--trex-purple); }
+        .list-premium li i { color: var(--trex-blue); }
+
+        .file-instruction {
+            background: rgba(157, 78, 221, 0.1);
+            border: 2px solid var(--trex-purple);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            animation: glow 3s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .file-instruction {
+                padding: 20px;
+                margin-top: 25px;
+            }
+        }
+
+        .file-instruction i {
+            font-size: 1.5rem;
+            color: var(--trex-purple);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .file-instruction i {
+                font-size: 2rem;
+            }
+        }
+
+        .file-instruction p {
+            font-size: 1rem;
+            color: #DDD;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .file-instruction p {
+                font-size: 1.1rem;
+            }
+        }
+
+        .card-btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .card-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .card-btn:hover::before {
+            left: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .card-btn {
+                padding: 18px;
+                font-size: 1.4rem;
+                margin-top: 25px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .card-btn {
+                padding: 22px;
+                font-size: 1.6rem;
+                margin-top: 30px;
+            }
+            
+            .card-btn:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .btn-basic {
+            background: linear-gradient(45deg, var(--trex-orange), #FF8E53);
+        }
+
+        .btn-queue {
+            background: linear-gradient(45deg, var(--trex-purple), #B366FF);
+        }
+
+        .btn-premium {
+            background: linear-gradient(45deg, var(--trex-blue), #0099FF);
+        }
+
+        /* === БЛОК БЕЗОПАСНОСТИ === */
+        .security-block {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(157, 78, 221, 0.1));
+            border-radius: 20px;
+            padding: 30px 20px;
+            margin: 40px auto;
+            border: 3px solid var(--trex-green);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 1s forwards;
+        }
+
+        @media (min-width: 768px) {
+            .security-block {
+                padding: 40px 30px;
+                margin: 60px auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .security-block {
+                padding: 50px 40px;
+                margin: 80px auto;
+            }
+        }
+
+        .security-icon {
+            font-size: 2.5rem;
+            color: var(--trex-green);
+            margin-bottom: 15px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @media (min-width: 768px) {
+            .security-icon {
+                font-size: 3.5rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .security-icon {
+                font-size: 4.5rem;
+                margin-bottom: 30px;
+            }
+        }
+
+        .security-block h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--trex-green);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        @media (min-width: 768px) {
+            .security-block h2 {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .security-block h2 {
+                font-size: 3rem;
+                margin-bottom: 30px;
+                letter-spacing: 2px;
+            }
+        }
+
+        .security-block p {
+            font-size: 1rem;
+            color: #DDD;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .security-block p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .security-block p {
+                font-size: 1.3rem;
+                margin-bottom: 35px;
+            }
+        }
+
+        .response-time {
+            background: linear-gradient(45deg, var(--trex-blue), #0099FF);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin: 20px auto;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .response-time {
+                padding: 15px 25px;
+                font-size: 1.5rem;
+                margin: 25px auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .response-time {
+                padding: 20px 35px;
+                font-size: 1.8rem;
+                margin: 30px auto;
+            }
+        }
+
+        .performance-time {
+            color: var(--trex-green);
+            font-size: 1.1rem;
+            margin-top: 15px;
+            font-weight: 700;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            animation: glow 3s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .performance-time {
+                font-size: 1.3rem;
+                padding: 12px 25px;
+                margin-top: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .performance-time {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+                margin-top: 25px;
+            }
+        }
+
+        /* === КОНТАКТЫ === */
+        .contacts {
+            background: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(20, 20, 35, 0.9));
+            border-radius: 20px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            border: 3px solid var(--trex-blue);
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 1.2s forwards;
+        }
+
+        @media (min-width: 768px) {
+            .contacts {
+                padding: 50px 30px;
+                margin: 60px auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .contacts {
+                padding: 70px 50px;
+                border-radius: 35px;
+                margin: 80px auto;
+            }
+        }
+
+        .contact-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--trex-blue);
+            letter-spacing: 1px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-title {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .contact-title {
+                font-size: 3.5rem;
+                margin-bottom: 60px;
+                letter-spacing: 3px;
+            }
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                flex-direction: row;
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .contact-grid {
+                gap: 30px;
+            }
+        }
+
+        .contact-card {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        @media (min-width: 768px) {
+            .contact-card {
+                padding: 30px 25px;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .contact-card {
+                flex-direction: row;
+                text-align: left;
+                padding: 40px 30px;
+            }
+            
+            .contact-card:hover::before {
+                left: 100%;
+            }
+            
+            .contact-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(157, 78, 221, 0.2));
+                border-color: var(--trex-blue);
+                box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            }
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            min-width: 50px;
+            animation: pulse 3s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .contact-icon {
+                font-size: 3rem;
+                min-width: 60px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .contact-icon {
+                font-size: 3.5rem;
+                min-width: 70px;
+            }
+        }
+
+        .telegram-icon { color: #0088CC; }
+        .admin-icon { color: var(--trex-orange); }
+
+        .contact-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-info h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .contact-info h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .contact-info p {
+            color: #AAA;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-info p {
+                font-size: 1rem;
+            }
+        }
+
+        .contact-code {
+            background: rgba(0, 136, 204, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: inline-block;
+            font-family: monospace;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        @media (min-width: 1024px) {
+            .contact-code {
+                font-size: 1.1rem;
+                padding: 12px 20px;
+            }
+            
+            .contact-card:hover .contact-code {
+                background: rgba(0, 212, 255, 0.3);
+                transform: scale(1.05);
+            }
+        }
+
+        /* === ФУТЕР === */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 3px solid var(--trex-purple);
+            background: rgba(10, 10, 20, 0.9);
+            position: relative;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 1.4s forwards;
+        }
+
+        @media (min-width: 768px) {
+            footer {
+                padding: 50px 0;
+            }
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--trex-purple);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            animation: pulse 4s infinite;
+        }
+
+        @media (min-width: 768px) {
+            .footer-logo {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-logo {
+                font-size: 2.8rem;
+                margin-bottom: 30px;
+            }
+        }
+
+        .footer-description {
+            font-size: 1rem;
+            color: #AAA;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .footer-description {
+                font-size: 1.1rem;
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-description {
+                font-size: 1.3rem;
+                margin-bottom: 50px;
+            }
+        }
+
+        .payment-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--trex-blue);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .payment-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .payment-title {
+                font-size: 2.5rem;
+                margin-bottom: 25px;
+            }
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .payment-methods {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+                margin-top: 30px;
+            }
+        }
+
+        .payment-item {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        @media (min-width: 768px) {
+            .payment-item {
+                font-size: 1.4rem;
+                padding: 15px 25px;
+                width: auto;
+                min-width: 200px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .payment-item {
+                font-size: 1.8rem;
+                padding: 18px 35px;
+            }
+            
+            .payment-item:hover::before {
+                left: 100%;
+            }
+            
+            .payment-item:hover {
+                transform: translateY(-8px) scale(1.05);
+                background: rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .tg-prem { 
+            color: #FFD700; 
+            border: 2px solid #FFD700; 
+        }
+
+        .tg-stars { 
+            color: var(--trex-green); 
+            border: 2px solid var(--trex-green); 
+        }
+
+        .card-pay { 
+            color: var(--trex-orange); 
+            border: 2px solid var(--trex-orange); 
+        }
+
+        .copyright {
+            color: #666;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        @media (min-width: 768px) {
+            .copyright {
+                margin-top: 40px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .copyright {
+                margin-top: 50px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- НАВИГАЦИЯ -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">TREX OPTIMIZATION</a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- МОБИЛЬНОЕ МЕНЮ -->
+    <div class="mobile-menu">
+        <div class="container">
+            <div class="mobile-nav-links">
+                <a href="#reviews" class="mobile-nav-link">ОТЗЫВЫ</a>
+                <a href="#options" class="mobile-nav-link">УСЛУГИ</a>
+                <a href="#security" class="mobile-nav-link">БЕЗОПАСНОСТЬ</a>
+                <a href="#contacts" class="mobile-nav-link">КОНТАКТЫ</a>
+                <a href="https://t.me/repa_of_trex_optimization" target="_blank" class="mobile-nav-link" style="background: rgba(0, 136, 204, 0.2);">
+                    <i class="fab fa-telegram"></i> TELEGRAM КАНАЛ
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i> ПРОФЕССИОНАЛЬНАЯ ОПТИМИЗАЦИЯ ПК
+                </div>
+                
+                <h1>ТВОЙ ПК ТОРМОЗИТ?<br>СДЕЛАЕМ ЕГО РАКЕТОЙ!</h1>
+                
+                <p>
+                    Три варианта оптимизации под любой бюджет и потребности.<br>
+                    Работаю удалённо — ты видишь каждый шаг. Результат через 35 минут.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЯ ОТЗЫВОВ -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 class="reviews-title">ОТЗЫВЫ КЛИЕНТОВ</h2>
+            <p class="reviews-subtitle">Более 1000 довольных клиентов уже улучшили производительность своих ПК с помощью наших услуг</p>
+            
+            <!-- Блок Telegram канала -->
+            <div class="telegram-channel">
+                <i class="fab fa-telegram telegram-icon"></i>
+                <h2>Наш Telegram канал</h2>
+                <p>Присоединяйтесь к нашему сообществу! В канале вы найдете реальные отзывы клиентов, полезные советы по оптимизации, анонсы обновлений и эксклюзивные предложения.</p>
+                <a href="https://t.me/repa_of_trex_optimization" target="_blank" class="telegram-btn">
+                    <i class="fab fa-telegram"></i>
+                    Перейти в канал
+                </a>
+            </div>
+
+            <!-- Сетка отзывов -->
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Отзывы будут добавляться через JavaScript -->
+            </div>
+
+            <!-- Статистика -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Довольных клиентов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Положительных отзывов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Поддержка клиентов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Игр оптимизировано</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ВАРИАНТЫ ОПТИМИЗАЦИИ -->
+    <section id="options" class="options-section">
+        <div class="container">
+            <h2 class="section-title">ВЫБЕРИ СВОЙ ВАРИАНТ</h2>
+            
+            <div class="options-grid">
+                <!-- КАРТОЧКА 1: БАЗОВЫЙ МИНИМУМ -->
+                <div class="option-card card-basic">
+                    <div class="option-badge badge-basic">ПОПУЛЯРНЫЙ</div>
+                    
+                    <div class="option-header">
+                        <div class="option-icon icon-basic">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h3 class="option-title title-basic">БАЗОВЫЙ МИНИМУМ</h3>
+                            <p class="option-subtitle">Всё необходимое для стабильной работы</p>
+                        </div>
+                    </div>
+                    
+                    <div class="price-tag price-basic">300 ₽</div>
+                    
+                    <ul class="includes-list list-basic">
+                        <li><i class="fas fa-check-circle"></i> <strong>Чистка системного мусора</strong> — удаление временных файлов</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Оптимизация Windows 10/11</strong> — базовые настройки</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Настройка автозагрузки</strong> — ускорение запуска системы</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Оптимизация мыши</strong> — для точности в играх</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Настройка Steam/Epic Games</strong> — базовые параметры</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Приоритет для CS2</strong> — основная настройка</li>
+                    </ul>
+                    
+                    <a href="https://t.me/trex_optimization" target="_blank" class="card-btn btn-basic">
+                        <i class="fab fa-telegram"></i> КУПИТЬ БАЗОВЫЙ МИНИМУМ
+                    </a>
+                </div>
+
+                <!-- КАРТОЧКА 2: БЕЗ ОЧЕРЕДИ -->
+                <div class="option-card card-queue">
+                    <div class="option-badge badge-queue">МГНОВЕННО</div>
+                    
+                    <div class="option-header">
+                        <div class="option-icon icon-queue">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h3 class="option-title title-queue">БЕЗ ОЧЕРЕДИ</h3>
+                            <p class="option-subtitle">Самостоятельная оптимизация по инструкции</p>
+                        </div>
+                    </div>
+                    
+                    <div class="price-tag price-queue">450 ₽</div>
+                    
+                    <ul class="includes-list list-queue">
+                        <li><i class="fas fa-check-circle"></i> <strong>Готовые файлы оптимизации</strong> — скачай и запусти</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Подробная инструкция</strong> — шаг за шагом</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Настройки для максимального FPS</strong> в CS2</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Скрипты очистки системы</strong> — безопасные</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Настройки реестра</strong> для производительности</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Файлы твиков NVIDIA/AMD</strong></li>
+                    </ul>
+                    
+                    <div class="file-instruction">
+                        <i class="fas fa-download"></i>
+                        <p><strong>Если не хочешь ждать — оплачиваешь, скачиваешь файлы и делаешь всё по инструкции!</strong></p>
+                    </div>
+                    
+                    <a href="https://t.me/Trex_adm1n" target="_blank" class="card-btn btn-queue">
+                        <i class="fas fa-user-tie"></i> КУПИТЬ ДОСТУП К ФАЙЛАМ
+                    </a>
+                </div>
+
+                <!-- КАРТОЧКА 3: РОСКОШНЫЙ МАКСИМУМ -->
+                <div class="option-card card-premium">
+                    <div class="option-badge badge-premium">ПРЕМИУМ</div>
+                    
+                    <div class="option-header">
+                        <div class="option-icon icon-premium">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div>
+                            <h3 class="option-title title-premium">РОСКОШНЫЙ МАКСИМУМ</h3>
+                            <p class="option-subtitle">Полный контроль над производительностью</p>
+                        </div>
+                    </div>
+                    
+                    <div class="price-tag price-premium">500 ₽</div>
+                    
+                    <ul class="includes-list list-premium">
+                        <li><i class="fas fa-star"></i> <strong>ВСЁ из Базового минимума</strong></li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Глубокая оптимизация системы</strong> — тонкие настройки</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Настройка BIOS/UEFI</strong> через TeamViewer</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Индивидуальные настройки</strong> под ваши игры</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Оптимизация SSD/HDD</strong> — максимальная скорость</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Пожизненная консультация</strong> в Telegram</li>
+                    </ul>
+                    
+                    <a href="https://t.me/trex_optimization" target="_blank" class="card-btn btn-premium">
+                        <i class="fab fa-telegram"></i> КУПИТЬ РОСКОШНЫЙ МАКСИМУМ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК БЕЗОПАСНОСТИ -->
+    <section id="security" class="security-block">
+        <div class="container">
+            <div class="security-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            
+            <h2>БЕЗОПАСНО И ПРОЗРАЧНО</h2>
+            
+            <p>
+                Для вариантов 1 и 3 я подключаюсь через TeamViewer или AnyDesk. <strong>Ты видишь каждый мой клик в реальном времени.</strong><br>
+                Не трогаю твои файлы, пароли или личные данные. Если переживаешь — можешь поменять пароли до начала работы.
+            </p>
+            
+            <div class="response-time">
+                <i class="fas fa-clock"></i> ОТВЕЧАЮ В ТЕЧЕНИЕ 15 МИНУТ
+            </div>
+            
+            <div class="performance-time">
+                <i class="fas fa-hourglass-half"></i> ВЫПОЛНЯЮ ЗАКАЗ ЗА 35 МИНУТ
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2 class="contact-title">СВЯЖИСЬ СО МНОЙ</h2>
+            
+            <div class="contact-grid">
+                <a href="https://t.me/trex_optimization" target="_blank" class="contact-card">
+                    <div class="contact-icon telegram-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>ТЕЛЕГРАМ КАНАЛ</h3>
+                        <p>Для покупки оптимизации (варианты 1 и 3)</p>
+                        <div class="contact-code" style="color: #00D4FF;">@trex_optimization</div>
+                    </div>
+                </a>
+                
+                <a href="https://t.me/Trex_adm1n" target="_blank" class="contact-card">
+                    <div class="contact-icon admin-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>ЛИЧНЫЕ СООБЩЕНИЯ</h3>
+                        <p>Для варианта 2 (файлы) и вопросов</p>
+                        <div class="contact-code" style="color: #FF8E53;">@Trex_adm1n</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <p class="footer-logo">TREX OPTIMIZATION</p>
+            
+            <p class="footer-description">
+                Профессиональная оптимизация Windows для игр. Три варианта на любой бюджет.<br>
+                Гарантирую результат — FPS вырастет минимум на 20-40%.
+            </p>
+            
+            <div class="payment-title">ПРИНИМАЮ ОПЛАТУ</div>
+            
+            <div class="payment-methods">
+                <div class="payment-item tg-prem">
+                    <i class="fab fa-telegram"></i> TELEGRAM STARS
+                </div>
+                <div class="payment-item tg-stars">
+                    <i class="fas fa-qrcode"></i> СБП ПО QR-КОДУ
+                </div>
+                <div class="payment-item card-pay">
+                    <i class="fas fa-credit-card"></i> ПЕРЕВОД НА КАРТУ
+                </div>
+            </div>
+            
+            <p class="copyright">
+                © 2024 TREX OPTIMIZATION. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <!-- СКРИПТ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Мобильное меню
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                // Меняем иконку
+                const icon = this.querySelector('i');
+                if (mobileMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Закрытие меню при клике на ссылку
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                });
+            });
+            
+            // Данные отзывов
+            const reviewsData = [
+                {
+                    name: "Александр",
+                    date: "15.03.2024",
+                    stars: 5,
+                    text: "После оптимизации FPS в Cyberpunk вырос с 45 до стабильных 80! Просто невероятный результат, игра стала совершенно другой.",
+                    game: "Cyberpunk 2077"
+                },
+                {
+                    name: "Дмитрий",
+                    date: "10.03.2024",
+                    stars: 5,
+                    text: "Заказывал премиум пакет для стриминга. Теперь могу стримить в 4K без лагов и падений FPS. Отличная работа!",
+                    game: "Escape from Tarkov"
+                },
+                {
+                    name: "Михаил",
+                    date: "05.03.2024",
+                    stars: 5,
+                    text: "Базовая оптимизация помогла ожидать старый ПК. В Dota 2 теперь стабильные 144 FPS. Спасибо за быструю работу!",
+                    game: "Dota 2"
+                },
+                {
+                    name: "Екатерина",
+                    date: "28.02.2024",
+                    stars: 5,
+                    text: "Производительность ноутбука улучшилась на 40%. Теперь комфортно играю в Hogwarts Legacy на средних настройках.",
+                    game: "Hogwarts Legacy"
+                },
+                {
+                    name: "Иван",
+                    date: "20.02.2024",
+                    stars: 5,
+                    text: "Оптимизация под CS2 дала +100 FPS! Теперь могу соревноваться на профессиональном уровне. Рекомендую всем геймерам!",
+                    game: "Counter-Strike 2"
+                },
+                {
+                    name: "Сергей",
+                    date: "12.02.2024",
+                    stars: 5,
+                    text: "Заказывал 'Без очереди' — всё сделали за 2 часа. Система работает как часы, все игры запускаются моментально.",
+                    game: "Call of Duty"
+                }
+            ];
+            
+            // Генерация отзывов
+            function generateReviews() {
+                const reviewsGrid = document.getElementById('reviewsGrid');
+                
+                reviewsData.forEach((review, index) => {
+                    const reviewCard = document.createElement('div');
+                    reviewCard.className = 'review-card';
+                    
+                    // Генерация звезд
+                    let starsHTML = '';
+                    for (let i = 0; i < 5; i++) {
+                        if (i < review.stars) {
+                            starsHTML += '<i class="fas fa-star"></i>';
+                        } else {
+                            starsHTML += '<i class="far fa-star"></i>';
+                        }
+                    }
+                    
+                    // Генерация инициалов для аватара
+                    const initials = review.name.charAt(0);
+                    
+                    reviewCard.innerHTML = `
+                        <div class="review-header">
+                            <div class="review-avatar">${initials}</div>
+                            <div class="review-info">
+                                <h3>${review.name}</h3>
+                                <div class="review-date">${review.date}</div>
+                                <div class="review-stars">${starsHTML}</div>
+                            </div>
+                        </div>
+                        <div class="review-text">${review.text}</div>
+                        <div class="review-game">${review.game}</div>
+                    `;
+                    
+                    reviewsGrid.appendChild(reviewCard);
+                    
+                    // Анимация появления с задержкой
+                    setTimeout(() => {
+                        reviewCard.classList.add('visible');
+                    }, 100 + index * 100);
+                });
+            }
+            
+            // Анимация появления карточек при прокрутке
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Наблюдаем за всеми элементами с анимацией
+            document.querySelectorAll('.option-card, .review-card, .security-block, .contacts, footer').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Плавный скролл для навигации
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Обновляем год в футере
+            const yearSpan = document.querySelector('.copyright');
+            if (yearSpan) {
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', new Date().getFullYear());
+            }
+
+            // Скрытие/показ навигации при скролле
+            let lastScroll = 0;
+            const navbar = document.querySelector('.navbar');
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll <= 100) {
+                    navbar.classList.remove('hidden');
+                    return;
+                }
+                
+                if (currentScroll > lastScroll && !navbar.classList.contains('hidden')) {
+                    // Прокрутка вниз
+                    navbar.classList.add('hidden');
+                } else if (currentScroll < lastScroll && navbar.classList.contains('hidden')) {
+                    // Прокрутка вверх
+                    navbar.classList.remove('hidden');
+                }
+                
+                lastScroll = currentScroll;
+            });
+
+            // Генерация отзывов
+            generateReviews();
+            
+            // Добавляем задержки анимации для карточек
+            document.querySelectorAll('.option-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            // Плавное появление всего сайта
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 300);
+            
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                }
+            });
+            
+            // Адаптация для touch-устройств
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
+        });
+    </script>
+</body>
+</html>
